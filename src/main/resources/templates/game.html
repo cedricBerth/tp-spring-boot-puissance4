@@ -1,0 +1,14 @@
+<h1>Initialisation de mon nouveau jeu puissance 4</h1>
+
+{{ gm.nom1 }} contre 
+{{ gm.nom2 }}. Le duel de titans !
+
+<table>
+	{{#gm.jetons}}
+		<tr>
+			{{#.}}
+				<td>{{.}}</td>
+			{{/.}}
+		</tr>
+	{{/gm.jetons}}
+</table>
