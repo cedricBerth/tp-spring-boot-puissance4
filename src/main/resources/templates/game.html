@@ -1,14 +1,15 @@
 <h1>Initialisation de mon nouveau jeu puissance 4</h1>
 
-{{ gm.nom1 }} contre 
-{{ gm.nom2 }}. Le duel de titans !
+{{#gm.tourJoueur1}}C'est au tour de {{gm.nom1}} {{/gm.tourJoueur1}}
+{{^gm.tourJoueur1}}C'est au tour de {{gm.nom2}} {{/gm.tourJoueur1}}
 
-<table>
+<table border="1" cellpadding="8">
 	{{#gm.jetons}}
 		<tr>
 			{{#.}}
-				<td>{{.}}</td>
+				<td><a href="http://localhost:8080/game/drop/{{-index}}">{{.}}</a></td>
 			{{/.}}
 		</tr>
 	{{/gm.jetons}}
 </table>
+<a href="http://localhost:8080/game/new">Nouvelle partie</a>
