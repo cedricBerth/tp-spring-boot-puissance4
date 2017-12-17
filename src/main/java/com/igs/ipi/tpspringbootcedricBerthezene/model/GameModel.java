@@ -6,7 +6,8 @@ public class GameModel {
 	
 	private String nom1; 
 	private String nom2;
-	private int jetons[][] = new int[7][6]; 
+	// Tableau d'enum jeton
+	private Jeton jetons[][] = new Jeton[7][6]; 
 	// Booléen pour définir le tour du joueur
 	private boolean tourJoueur1; 
 	
@@ -26,7 +27,7 @@ public class GameModel {
 	public GameModel() {
 		for (int i = 0; i < jetons.length; i++) {
 			for (int j = 0; j < jetons[i].length; j++) {
-				jetons[i][j] = 0; 
+				jetons[i][j] = Jeton.VIDE; 
 			}
 		}
 		// Pour chaque nouvelle partie, c'est toujours au premier joueur de commencer
@@ -47,7 +48,7 @@ public class GameModel {
 	} 
 	
 	// Tableau de int
-	public int[][] getJetons() {
+	public Jeton[][] getJetons() {
 		return this.jetons; 
 	}
 	
@@ -56,13 +57,13 @@ public class GameModel {
 		// On parcours le tableau de bas en haut en itérant sur la ligne
 		for (int h = this.jetons.length - 1; h >= 0; h--) {
 			// On vérifie si la ligne sélectionné possède déjà un jeton avec 0
-			if (jetons[h][index] == 0) {
+			if (jetons[h][index] == Jeton.VIDE) {
 				if (tourJoueur1) {
-					jetons[h][index] = 1;
+					jetons[h][index] = Jeton.ROUGE;
 					tourJoueur1 = false;
 				} else {
 					// le joueur 2 a joué donc tourJoueur1 revient à true
-					jetons[h][index] = 2; 
+					jetons[h][index] = Jeton.BLEU; 
 					tourJoueur1 = true; 
 				}
 				
@@ -72,6 +73,8 @@ public class GameModel {
 		// La place est déjà occupé erreur
 		throw new IllegalArgumentException("Place déjà occupée par le jeton"); 
 	}
+	
+	// vérifier si le joueur a gagné
 	
 	
 

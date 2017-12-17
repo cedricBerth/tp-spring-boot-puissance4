@@ -9,7 +9,7 @@ public class GameService {
 	
 	public GameModel newGame() {
 		GameModel gm = new GameModel(); 
-		gm.setNom1("jean");
+		gm.setNom1("Jean");
 		gm.setNom2("Marc");
 		return gm; 
 	}

@@ -1,13 +1,33 @@
 <h1>Initialisation de mon nouveau jeu puissance 4</h1>
 
-{{#gm.tourJoueur1}}C'est au tour de {{gm.nom1}} {{/gm.tourJoueur1}}
-{{^gm.tourJoueur1}}C'est au tour de {{gm.nom2}} {{/gm.tourJoueur1}}
+<!-- condition vérifiée -->
+{{#gm.tourJoueur1}}
+	C'est au tour de {{gm.nom1}}
+	<img src="http://localhost:8080/rouge.png" />
+{{/gm.tourJoueur1}}
+
+<!-- condition non vérifiée -->
+{{^gm.tourJoueur1}}
+	C'est au tour de {{gm.nom2}}
+	<img src="http://localhost:8080/bleu.png" />
+{{/gm.tourJoueur1}}
 
 <table border="1" cellpadding="8">
 	{{#gm.jetons}}
 		<tr>
 			{{#.}}
-				<td><a href="http://localhost:8080/game/drop/{{-index}}">{{.}}</a></td>
+				<td>
+					<a href="http://localhost:8080/game/drop/{{-index}}" style="display: block; text-decoration:none;">{{.}}
+						<!-- condition vérifiée, affichage du jeton -->
+						{{#code}}
+							<img src="http://localhost:8080/{{.}}" />
+						{{/code}}
+						<!-- condition non vérifiée, espace vide -->
+						{{^code}}
+							&nbsp; 
+						{{/code}}
+					</a>
+				</td>
 			{{/.}}
 		</tr>
 	{{/gm.jetons}}
